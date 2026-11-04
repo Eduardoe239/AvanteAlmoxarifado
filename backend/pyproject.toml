@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+# App plana (sem pacote), não uma lib para distribuir -- lista os módulos
+# explicitamente para o setuptools não tentar adivinhar o layout.
+py-modules = [
+    "main", "models", "schemas", "auth", "qr_service",
+    "database", "email_service", "tasks", "errors",
+]
+
+[project]
+name = "avante-almoxarifado-backend"
+version = "0.1.0"
+description = "Backend do Avante Almoxarifado (FastAPI + SQLAlchemy + Alembic)"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "fastapi==0.115.6",
+    "uvicorn[standard]==0.34.0",
+    "sqlalchemy==2.0.36",
+    "pydantic==2.10.4",
+    "psycopg2-binary==2.9.10",
+    "alembic==1.14.0",
+    "python-jose[cryptography]==3.3.0",
+    "passlib[bcrypt]==1.7.4",
+    "bcrypt==4.0.1",
+    "python-multipart==0.0.20",
+    "email-validator==2.2.0",
+    "apscheduler==3.10.4",
+    "opencv-python-headless==4.10.0.84",
+    "pytesseract==0.3.13",
+    "Pillow==11.0.0",
+    "qrcode[pil]==8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.4",
+    "freezegun==1.5.1",
+    "httpx==0.28.1",
+    "ruff==0.8.4",
+    "mypy==1.13.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+# baseline nunca passou por lint: começar só com erros reais (sintaxe + pyflakes)
+# e ampliar as regras (I, UP, B) por etapas, sem travar o código legado.
+select = ["E9", "F"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+# baseline: o código atual não tem type hints consistentes; começar em modo
+# permissivo (F1-03 "quando aplicável") e apertar progressivamente por
+# módulo, não travar tudo de uma vez.
+check_untyped_defs = false

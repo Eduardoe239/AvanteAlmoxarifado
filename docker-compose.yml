@@ -1,0 +1,67 @@
+# Sobe o stack completo: banco Postgres real, backend e frontend.
+#
+# Uso:
+#   1. Copie backend/.env.example para backend/.env e preencha SECRET_KEY
+#      (a DATABASE_URL do .env é ignorada aqui — este compose já define a
+#      dele apontando para o serviço "db" abaixo).
+#   2. docker compose up --build
+#   3. Em outro terminal: docker compose exec backend python scripts/create_admin.py admin sua_senha --admin
+#
+# NUNCA use POSTGRES_PASSWORD com o valor de exemplo abaixo em produção —
+# defina via variável de ambiente do host ou um arquivo .env não commitado.
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: lab_almoxarifado
+      POSTGRES_USER: lab_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-troque-esta-senha}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lab_user -d lab_almoxarifado"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://lab_user:${POSTGRES_PASSWORD:-troque-esta-senha}@db:5432/lab_almoxarifado
+      SECRET_KEY: ${SECRET_KEY}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-60}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:3000}
+      # Default seguro (true). Se você acessar via http://localhost puro
+      # (sem HTTPS/proxy reverso na frente), rode com COOKIE_SECURE=false
+      # no ambiente antes do `docker compose up`, senão o navegador vai
+      # recusar aceitar o cookie de sessão.
+      COOKIE_SECURE: ${COOKIE_SECURE:-true}
+      EMAIL_HABILITADO: ${EMAIL_HABILITADO:-false}
+      SMTP_SERVER: ${SMTP_SERVER:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      EMAIL_USE_TLS: ${EMAIL_USE_TLS:-true}
+      EMAIL_SENDER: ${EMAIL_SENDER:-no-reply@almoxarifado.local}
+      EMAIL_PASSWORD: ${EMAIL_PASSWORD:-}
+      OCR_LANG: ${OCR_LANG:-por+eng}
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+
+volumes:
+  db_data:

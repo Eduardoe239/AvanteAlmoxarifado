@@ -1,0 +1,29 @@
+# Versionamento estrito (F1-01). Espelha as dependências travadas em
+# pyproject.toml -- mantido por compatibilidade até a migração completa
+# para `uv` (pyproject.toml + uv.lock, conforme secao 53 do Plano Mestre).
+#
+# STATUS: VERIFICADO em Python 3.12 / Windows: `pip install -r requirements.txt`
+# + `pytest` = 104 passed (2026-09-27). NAO verificado em Python 3.11
+# (Dockerfile/CI) nem em Linux -- o CI (.github/workflows/ci.yml) confirma.
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+sqlalchemy==2.0.36
+pydantic==2.10.4
+psycopg2-binary==2.9.10
+alembic==1.14.0
+pytest==8.3.4
+freezegun==1.5.1
+httpx==0.28.1
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+python-multipart==0.0.20
+email-validator==2.2.0
+apscheduler==3.10.4
+
+opencv-python-headless==4.10.0.84
+pytesseract==0.3.13
+Pillow==11.0.0
+qrcode[pil]==8.0
+
+PyMuPDF==1.24.14

@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: lab_almoxarifado
+      POSTGRES_USER: lab_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lab_user -d lab_almoxarifado"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - almox-atual_db_data_test:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ACCESS_TOKEN_EXPIRE_MINUTES: "60"
+      ALLOWED_ORIGINS: "http://localhost:3001"
+      COOKIE_SECURE: "true"
+      DATABASE_URL: postgresql://lab_user:${POSTGRES_PASSWORD}@db:5432/lab_almoxarifado
+      SECRET_KEY: ${SECRET_KEY}
+    ports:
+      - "8001:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: "http://localhost:8001"
+    depends_on:
+      - backend
+    ports:
+      - "3001:3000"
+
+volumes:
+  almox-atual_db_data_test:
+    name: almox-atual_db_data_test
