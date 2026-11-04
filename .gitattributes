@@ -1,0 +1,17 @@
+# Finais de linha normalizados (paridade Linux × Windows — ADR-020)
+* text=auto eol=lf
+
+# Scripts do Windows mantêm CRLF
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+*.ps1  text eol=crlf
+
+# Binários
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.ico  binary
+*.pdf  binary
+*.zip  binary
+*.woff2 binary

@@ -1,0 +1,61 @@
+# Segredos e configurações locais
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+coverage/
+storybook-static/
+*.tsbuildinfo
+npm-debug.log*
+
+# Testes E2E e visuais
+playwright-report/
+test-results/
+.lighthouseci/
+
+# Bancos, backups e dados (nunca no Git)
+*.dump
+*.backup
+*.bak
+*.sql.gz
+*.sqlite
+*.sqlite3
+*.db
+backup_*/
+restic-repo/
+
+# Pacotes gerados
+packaging/out/
+*.deb
+*.msi
+
+# Sistema e IDE
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.log
