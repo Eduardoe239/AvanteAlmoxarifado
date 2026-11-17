@@ -86,6 +86,7 @@ Fora de `docs/`:
 | D-18 | 17/11/2026 | **Modelo de interface aprovado**: protótipo navegável no Claude Design (celular, notebook, Estação Avante e design system) é o padrão visual e de interação de todo o sistema (Volume 07 §17.1) |
 | D-19 | 17/11/2026 | Capacidade do desenvolvedor: **12 h por semana** (Volume 12 §2) |
 | D-20 | 17/11/2026 | Protótipo testado com usuários e funcionando (R0-13 concluída; registro a anexar) |
+| D-21 | 17/11/2026 | Nenhum código do MVP é copiado ou adaptado; o MVP é só referência de funcionalidades e de defeitos a evitar (ADR-001) |
 
 ## 4. Decisões em aberto (consolidado)
 

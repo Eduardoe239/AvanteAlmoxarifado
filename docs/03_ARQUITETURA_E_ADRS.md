@@ -104,9 +104,10 @@ Cada módulo do backend tem `router.py`, `schemas.py`, `service.py`, `repository
 
 ## 5. ADRs
 
-### ADR-001 — Produto novo; MVP congelado
-**Status:** Proposta
-**Decisão:** construir o produto do zero na branch `definitivo` (ADR-019), reaproveitando ideias e trechos validados do MVP (envelope de erro com request_id, regras de devolução, heurísticas de leitura, telas aprovadas), sempre com testes novos. Todas as funções do MVP são preservadas e melhoradas (Anexo A1). O MVP não é modificado; seus dados entram só por importador (R2) e ele é aposentado quando a R2 for aceita (ADR-026).
+### ADR-001 — Produto novo, sem código do MVP; MVP congelado
+**Status:** Proposta (revisada em 17/11/2026 por decisão do responsável, D-21)
+**Decisão:** construir o produto do zero na branch `definitivo` (ADR-019). **Nenhum código do MVP é copiado ou adaptado** — nem backend, frontend, migrations, testes, configurações ou scripts. O MVP serve **apenas como referência de funcionalidades** (Anexo A1) e de defeitos a não repetir (Volume 02 §4): o que ele faz é estudado e reimplementado a partir dos requisitos e do modelo de interface aprovado, com testes novos. Todas as funções do MVP são preservadas e melhoradas. O MVP não é modificado; seus dados entram só pelo importador (R2) e ele é aposentado quando a R2 for aceita (ADR-026).
+**Motivo:** o código do MVP foi feito como norte do produto e tem qualidade inferior à exigida; copiá-lo traria junto seus defeitos e adaptações.
 
 ### ADR-002 — Servidor nativo; Linux primeiro, Windows na Edição Comercial
 **Status:** Proposta (substitui a versão que entregava Linux e Windows juntos)

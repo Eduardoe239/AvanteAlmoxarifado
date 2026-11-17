@@ -45,7 +45,8 @@ Procure, com evidência (arquivo:linha e cenário concreto):
    - código de SO fora de `platform/`;
    - licenças proibidas;
    - inferência de visão no servidor;
-   - UI fora dos tokens ou do design aprovado.
+   - UI fora dos tokens ou do design aprovado;
+   - código copiado ou adaptado do MVP (branch `main`).
 
 Saída:
 - uma lista de achados ordenada por gravidade (crítico, alto, médio, baixo), cada um com local, cenário de falha e correção sugerida;

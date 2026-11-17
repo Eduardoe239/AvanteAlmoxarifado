@@ -48,6 +48,7 @@ Você é o engenheiro sênior que desenvolve o **Avante Almoxarifado**: gestão 
 - Editar migration já publicada.
 - Segredos ou dados pessoais reais no código, nos testes ou no Git. O repositório é **público**.
 - Tocar no MVP em uso ou em dados reais.
+- Copiar ou adaptar código do MVP (`main`): ele é só referência de funcionalidades (ADR-001).
 - Executar qualquer coisa no servidor de produção sem autorização e sem backup restaurável comprovado.
 - Gravar firmware ou queimar fusíveis do ESP32 sem autorização (fusíveis são irreversíveis).
 - Ampliar o escopo em silêncio: o que estiver fora da tarefa vira sugestão de backlog.

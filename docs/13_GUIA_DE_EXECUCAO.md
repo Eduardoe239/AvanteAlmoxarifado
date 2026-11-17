@@ -33,7 +33,7 @@ Qualidade profissional não é complexidade: nenhuma biblioteca, padrão ou serv
 1. Código, migrations, testes e execução reproduzível da branch `definitivo`.
 2. Volumes 01–12 e ADRs com status *Aceita*; design aprovado no Claude Design para as telas.
 3. Este guia e o `CLAUDE.md`.
-4. Código do MVP na `main`: **apenas referência** de funcionalidades (Anexo A1), nunca especificação técnica nem código a copiar.
+4. Código do MVP na `main`: **apenas referência** de funcionalidades (Anexo A1). **Nenhum trecho é copiado ou adaptado** (ADR-001): nem lógica, nem testes, nem configuração. Consultá-lo serve para entender *o que* a função faz; *como* fazer vem dos volumes.
 
 Divergência entre fontes: registrar, investigar e propor resolução ao responsável. Nunca escolher em silêncio. Requisito ambíguo: **perguntar**, com uma pergunta objetiva e as opções.
 

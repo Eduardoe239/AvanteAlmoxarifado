@@ -25,7 +25,7 @@ Cada decisão compara as alternativas reais; a escolhida está em **negrito**.
 | Alternativa | Avaliação |
 |---|---|
 | Evoluir o MVP no lugar | O modelo de dados (item = catálogo + unidade) e os defeitos estruturais exigiriam reescrever quase tudo, carregando dívidas (migrations quebradas, testes desatualizados) |
-| **Código novo, reaproveitando conhecimento e trechos validados do MVP** | Domínio correto desde o início; MVP intocado; exige importador de dados |
+| **Código novo, sem nenhum trecho do MVP; só o conhecimento das funções e dos defeitos é aproveitado** | Domínio correto desde o início; nenhum defeito herdado; MVP intocado; exige importador de dados |
 
 ### D-02 — Forma do aplicativo
 | Alternativa | Celular/tablet | Notebook | Custo e risco |
