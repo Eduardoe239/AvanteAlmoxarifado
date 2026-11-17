@@ -1,13 +1,14 @@
-# Estratégia de QR Code — Avante Almoxarifado
+# Volume 08 — QR Code, Etiquetas e Leitura
 
-**Versão:** 1.0 · **Data:** 03/11/2026
-**Relação:** detalha RF-QR-01..14 e RF-INV-06 do Plano Mestre v2.3 (a experiência do leitor está em `ESPECIFICACAO_UI_UX.md` §8.5) e substitui a alternativa em aberto da ADR-011.
+**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Responsável:** Luís Eduardo de Sousa Barbosa
+**Relação:** detalha RF-QR-01..14 e RF-INV-06 (Volume 02) e a ADR-011 (Volume 03). Experiência do leitor: Volume 07 §8.5. Visão computacional além da leitura de códigos e leitor de cartão: Volume 05.
 
 ---
 
 ## 1. Para que o QR serve (e para que não serve)
 
-No MVP, o QR foi usado como **contador**: cada leitura somava +1 ao estoque. Isso gera contagem duplicada, reativa itens desativados e não registra quem fez o quê (achado INT-01). Também não responde à pergunta "por que usar QR?".
+No MVP, o QR foi usado como **contador**: cada leitura somava +1 ao estoque. Isso gera contagem duplicada, reativa itens desativados e não registra quem fez o quê (defeito encontrado no diagnóstico do MVP). Também não responde à pergunta "por que usar QR?".
 
 No produto definitivo, o QR é a **identidade física de um objeto do almoxarifado**. Ele liga o objeto real à ficha digital dele. Escanear um QR significa: **"é este aqui"**. O sistema então mostra o que é, onde deveria estar, com quem está, o histórico, e quais ações fazem sentido agora, para quem escaneou.
 
@@ -129,7 +130,7 @@ Tecnologia: `BarcodeDetector` nativo onde existir; `zxing-wasm` como alternativa
 
 ## 7. Compatibilidade com etiquetas do MVP
 
-Durante a importação (Fase 10), cada código antigo (`AVT-...`, payload JSON, `NFE-...`) é registrado em uma tabela de mapeamento para a unidade ou o item correspondente. O leitor reconhece esses formatos e resolve pelo mapeamento, mostrando a sugestão "reetiquetar". Um relatório lista o que ainda usa etiqueta antiga. O suporte a formatos antigos é desativável quando o acervo estiver reetiquetado.
+Durante a importação dos dados do MVP (R2), cada código antigo (`AVT-...`, payload JSON, `NFE-...`) é registrado em uma tabela de mapeamento para a unidade ou o item correspondente. O leitor reconhece esses formatos e resolve pelo mapeamento, mostrando a sugestão "reetiquetar". Um relatório lista o que ainda usa etiqueta antiga. O suporte a formatos antigos é desativável quando o acervo estiver reetiquetado.
 
 ## 8. Segurança e privacidade
 

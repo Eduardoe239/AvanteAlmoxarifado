@@ -1,7 +1,9 @@
-# Especificação de UI, UX e Design System — Avante Almoxarifado
+# Volume 07 — UI, UX e Design System
 
-**Versão:** 1.1 · **Data:** 03/11/2026 — 1.1: marca Avante Tech Jr aplicada (§6.4), participantes dos testes definidos (§17), UX-DA-01 e UX-DA-05 resolvidas
-**Relação:** parte do conjunto de governança do produto definitivo. Detalha RF-APP, RNF-03, RNF-04, RNF-18 e RNF-19 do `PLANO_MESTRE_DESENVOLVIMENTO.md` v2.3, a ADR-021 e o RF-APP-09.
+**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Responsável:** Luís Eduardo de Sousa Barbosa
+**Histórico:** 1.0 (03/11/2026) especificação inicial · 1.1 marca e participantes · 3.0.0 integrada ao conjunto de volumes; telas de visão computacional, estação e leitor de cartão (§8.9, §8.10, J11–J13); desenho no Claude Design (§17); processo por release
+**Relação:** detalha RF-APP, RF-CV (experiência), RF-EMB-08, RNF-03, RNF-04, RNF-18, RNF-19, ADR-021 e RF-APP-09 (Volume 02).
 **Vale para:** todas as telas, em celular, tablet e notebook, nos temas claro e escuro.
 **Regra de ouro:** nenhuma tela entra em produção sem cumprir a Definição de Pronto de UI (§18).
 
@@ -75,7 +77,7 @@ Início (painel do papel)
 ### 4.2 URLs
 - Toda tela tem URL própria, legível e compartilhável: `/catalogo/itens/:id`, `/emprestimos?status=atrasado`.
 - Filtros, ordenação e aba ativa ficam na URL. Copiar o link reproduz a mesma visão para quem tem permissão.
-- `/q/:codigo` resolve etiquetas QR (`ESTRATEGIA_QR_CODE.md`).
+- `/q/:codigo` resolve etiquetas QR (Volume 08).
 - Voltar do navegador sempre funciona como o usuário espera; modais com estado relevante (ex.: ficha aberta pelo QR) têm URL.
 
 ### 4.3 Busca global
@@ -324,7 +326,7 @@ Todos os componentes são construídos sobre primitivas acessíveis (Radix UI) e
 2. **Permissão de câmera:** no primeiro uso, uma tela explica por que a câmera é necessária **antes** do pedido do navegador. Se a permissão for negada, mostrar instruções específicas do navegador/sistema para liberar e oferecer digitação do código.
 3. **Visor:** moldura central com cantos destacados; escurecimento ao redor; texto de orientação; botões de lanterna, troca de câmera e "Digitar código" sempre visíveis no rodapé (alcance do polegar).
 4. **Leitura:** retorno em até 100 ms (§6.9); a ficha sobe em folha inferior sem fechar o visor, para continuar escaneando.
-5. **Ficha:** objeto, estado, local, responsável e as ações contextuais (`ESTRATEGIA_QR_CODE.md` §5.2), com a principal em destaque.
+5. **Ficha:** objeto, estado, local, responsável e as ações contextuais (Volume 08 §5.2), com a principal em destaque.
 6. **Modos em sequência:** barra fixa "Carrinho · 3 itens — Revisar" acima dos controles; lista com remover/desfazer; repetição sinalizada, não somada.
 7. **Leitor USB/Bluetooth:** reconhecido em qualquer tela; aviso discreto "Leitor conectado" no primeiro uso.
 8. **Modo balcão:** tela cheia, leitura permanente, sessão do operador com bloqueio por inatividade, fonte maior e sons ligados.
@@ -350,9 +352,25 @@ Todos os componentes são construídos sobre primitivas acessíveis (Radix UI) e
 ### 8.8 Atalhos de teclado (notebook)
 `Ctrl/Cmd+K` paleta · `/` busca · `N` novo (na lista atual) · `G` seguido de `I`/`E`/`S` ir para Início/Empréstimos/Suporte · `?` lista de atalhos · `Esc` fecha. Atalhos de uma tecla podem ser desligados e nunca disparam dentro de campos (WCAG 2.1.4).
 
+### 8.9 Visão computacional (contagem, reconhecimento e leitura de texto)
+| Momento | Padrão |
+|---|---|
+| Antes de fotografar | Guia de enquadramento sobre a câmera (contorno da bandeja ou da plaqueta) e dica curta ("espalhe as peças, sem empilhar"); botão "Fazer manualmente" sempre visível |
+| Condição ruim | Aviso **antes** de processar, com o motivo e a correção ("pouca luz — aproxime de uma janela ou ligue a lanterna"); nunca um resultado ruim apresentado como bom |
+| Processando | Indicador de progresso no próprio quadro; cancelar a qualquer momento; meta ≤ 1,5 s (RNF-23) |
+| Resultado da contagem | Foto com um marcador numerado por peça, total grande no topo; tocar num marcador remove; tocar em área vazia adiciona; total atualiza na hora; "Confirmar 187 peças" como ação principal |
+| Resultado do reconhecimento | Até 5 cartões (foto de referência, nome, local, confiança em palavras: alta, média, baixa); "Nenhum destes" leva à busca com a foto anexada |
+| Resultado de leitura de texto | Campos preenchidos com o trecho da imagem ao lado; campo com formato inválido destacado; edição direta |
+| Confirmação | A operação mostra a origem ("contagem por foto, corrigida em 2 peças") e entra no histórico com o mesmo detalhe |
+| Acessibilidade | Total e lista de marcadores anunciados por leitor de tela; correção também por botões +1/−1; nenhuma informação só por cor |
+
+### 8.10 Balcão com leitor de cartão e modo estação
+- **Sessão de balcão (operador, tablet ou notebook):** cabeçalho fixo com o leitor vinculado e seu estado (conectado, sem servidor); ao aproximar um cartão, a pessoa aparece em destaque com foto (se houver), empréstimos ativos, atrasos e pendências; o operador escaneia itens e confirma. Cartão não vinculado mostra "Cartão não cadastrado — vincular a um usuário?" (só para quem tem permissão).
+- **Modo estação (quiosque, RF-EMB-08):** tela cheia, sem navegação geral, fontes e alvos de toque maiores (mín. 56 px), uma tarefa por tela: *aproxime o cartão → digite o PIN → retirar ou devolver → itens (leitura ou bandeja) → resumo → confirmar → comprovante*. Tempo de inatividade de 60 s volta ao início e encerra a sessão. Mensagens de erro em linguagem simples com o próximo passo. Sem servidor: tela "Fora do ar — procure o responsável do almoxarifado" e nenhuma ação disponível.
+
 ## 9. Jornadas principais
 
-Cada jornada vira um protótipo na Fase 0, um teste E2E e um roteiro de teste de usabilidade.
+Cada jornada vira um protótipo no Claude Design (R0 para J1–J7; na release correspondente para as demais), um teste E2E e um roteiro de teste de usabilidade.
 
 ### J1 — Primeiro acesso e instalação do app
 Convite por e-mail **ou** QR de conexão → página da organização (logotipo, nome) → criar senha (com medidor de força) → MFA, se o papel exigir (QR do autenticador + digitação, códigos de recuperação para baixar/imprimir) → **tela "Instale o app"** com instruções da plataforma detectada (Android/desktop: botão de instalação; iPhone: passo a passo ilustrado com o botão Compartilhar) → **tour de 3 telas**, que pode ser pulado, mostrando as tarefas do papel → início.
@@ -388,7 +406,16 @@ Gestor abre o inventário (escopo e responsáveis) → cada participante recebe 
 Lista com filtros → "Convidar" → e-mail(s), papel(éis) e escopo (almoxarifados) com descrição do que cada papel pode fazer → enviar. Edição de papel mostra o impacto ("passará a poder aprovar empréstimos em Almoxarifado Central") e pede reautenticação.
 
 ### J10 — Configuração inicial da organização (Proprietário)
-Assistente: organização e marca → fuso e idioma → almoxarifados e locais (com modelo de exemplo) → setores → políticas (padrões seguros, explicados) → e-mail (com envio de teste) → convidar a equipe → gerar cartaz com o QR de conexão. Pode parar e continuar depois.
+Assistente: organização e marca → fuso e idioma → almoxarifados e locais (com modelo de exemplo) → setores → políticas (padrões seguros, explicados) → e-mail (com envio de teste) → convidar a equipe → gerar cartaz com o QR de conexão. Pode parar e continuar depois. Na Edição Comercial, o assistente começa pela verificação do hardware (RF-COM-01) e oferece importar planilhas (RF-DAT-01).
+
+### J11 — Contar peças por foto (Operador, R3)
+No consumo, recebimento ou inventário → "Contar por foto" → enquadrar a bandeja → resultado com marcadores → corrigir com toques → confirmar o total → a quantidade entra na operação. **Meta:** contagem de 200 peças em < 30 s, contra vários minutos à mão.
+
+### J12 — Descobrir um item pela foto (Membro, R3)
+Busca → ícone de câmera → fotografar a peça → 5 sugestões com foto e local → escolher → ficha do item com "onde fica" e ações (pedir emprestado, consumir). Se nenhuma serve, segue para a busca por texto com a foto anexada ao pedido de cadastro.
+
+### J13 — Atendimento no balcão com cartão (Operador e Membro, R3)
+Operador abre a sessão de balcão → membro aproxima o cartão → a tela mostra a pessoa e suas pendências → operador escaneia os itens retirados ou devolvidos → confirma → o membro recebe o comprovante no app. **Meta:** atendimento completo de 3 itens em < 45 s.
 
 ## 10. Inventário de telas
 
@@ -397,6 +424,8 @@ Assistente: organização e marca → fuso e idioma → almoxarifados e locais (
 | Acesso | Login · Primeiro acesso (convite) · Recuperar senha · MFA (configurar, verificar, recuperação) · Instalar app · Sessão expirada (diálogo) | Todos |
 | Início | Painel por papel (Solicitante, Operador, Gestor, Atendente, Administrador, Auditor) | Todos |
 | Leitor | Visor · Ficha por leitura · Carrinho/sequência · Modo balcão · Permissão de câmera · Digitar código | Celular, tablet |
+| Visão computacional (R3) | Contagem por foto (captura, resultado, correção) · Busca por foto (captura, sugestões) · Leitura de plaqueta (captura, campos) · Fotos de referência do item | Celular, tablet |
+| Balcão e estação (R3/R4) | Sessão de balcão com leitor · Vincular cartão · Modo estação (cartão, PIN, retirar/devolver, bandeja, resumo, comprovante, fora do ar) | Tablet, estação |
 | Catálogo | Lista/busca · Ficha do item · Ficha da unidade · Novo/editar item · Unidades e etiquetas do item | Todos (edição: notebook/tablet) |
 | Empréstimos | Meus empréstimos · Detalhe com linha do tempo e comentários · Nova solicitação/carrinho · Aprovações · Ativos/atrasados · Reservas · Retirada · Devolução/ocorrência | Todos |
 | Estoque | Saldos · Movimentações · Detalhe de movimentação/estorno · Nova entrada manual · Entrada por NF-e (upload, mapeamento, revisão) · Transferência · Ajuste · Locais (árvore + conteúdo) · Inventários (lista, execução, divergências) | Notebook (execução de inventário: celular) |
@@ -406,7 +435,7 @@ Assistente: organização e marca → fuso e idioma → almoxarifados e locais (
 | Notificações | Central · Preferências | Todos |
 | Relatórios | Catálogo de relatórios · Visualização com filtros · Exportar | Notebook |
 | Perfil | Dados e foto · Segurança (senha, MFA, passkeys, dispositivos) · Preferências (tema, idioma, notificações) · Meus dados (LGPD) | Todos |
-| Administração | Usuários e papéis · Convites · Organização e marca · Almoxarifados · Setores · Políticas · E-mail · Saúde do sistema · Backups · Licença · Atualizações · Auditoria | Notebook |
+| Administração | Usuários e papéis · Convites · Organização e marca · Almoxarifados · Setores · Políticas · E-mail · Saúde do sistema (inclui disco, memória, temperatura) · Backups · Dispositivos (pareamento, saúde, atualização, revogação) · Modelos de visão (versões, métricas, ativação) · Automação · Importação e exportação de dados · Acesso de suporte do fornecedor · Licença · Atualizações · Auditoria | Notebook |
 | Sistema | 403 · 404 · 500 · Offline · Manutenção | Todos |
 
 ## 11. Painéis e visualização de dados
@@ -520,16 +549,19 @@ Toda tela é composta de componentes do design system; componente novo entra pri
 
 ## 17. Processo de design e validação com usuários
 
-| Fase | Atividade | Saída |
+**Ferramenta de design:** telas, fluxos e o design system visual são desenhados no **Claude Design** e aprovados pelo responsável **antes** de serem implementados. O código reproduz o design aprovado usando os tokens e componentes do §6–§7; telas geradas direto em código, sem design aprovado, não entram.
+
+| Release | Atividade | Saída |
 |---|---|---|
-| 0 | Entrevistas com 6–8 **membros da Avante Tech Jr** de pelo menos 3 papéis; observação do balcão e de um inventário real; levantamento das dores do MVP com quem usa | Personas, jornadas atuais, lista de dores priorizada |
-| 0 | Organização da navegação validada com usuários (classificação de cartões) | Mapa de navegação aprovado (§4.1) |
-| 0 | Wireframes → **protótipo navegável** de J1–J7 em celular e notebook | Protótipo testado com 5 usuários; ajustes |
-| 1 | Tokens, tema claro/escuro, componentes base no Storybook | Design system v0.1 |
-| 2–7 | Cada funcionalidade: revisão de design antes de codificar; revisão de qualidade visual antes do merge (§18) | Telas aprovadas |
-| Marco M1 (Alfa) | 1ª rodada de teste de usabilidade com tarefas reais | Relatório com problemas por gravidade |
-| Fase 8 | Revisão heurística completa (Nielsen) + auditoria de acessibilidade + 2ª rodada de usabilidade | Correções; métricas do §19 |
-| Piloto | Observação em uso real + questionário SUS | Métricas finais e backlog de melhorias |
+| R0 | Entrevistas com 6–8 **membros da Avante Tech Jr** de pelo menos 3 papéis; observação do balcão e de um inventário real; levantamento das dores do MVP com quem usa | Personas, jornadas atuais, lista de dores priorizada |
+| R0 | Organização da navegação validada com usuários (classificação de cartões) | Mapa de navegação aprovado (§4.1) |
+| R0 | Design system visual e **protótipo navegável** de J1–J7 em celular e notebook, no Claude Design | Protótipo testado com 5 usuários; ajustes; aprovação |
+| R0 | Tokens, tema claro/escuro, componentes base no Storybook, fiéis ao design aprovado | Design system v0.1 em código |
+| R1–R4 | Cada funcionalidade: tela desenhada e aprovada antes de codificar; revisão de qualidade visual antes do merge (§18) | Telas aprovadas |
+| Fim da R1 | 1ª rodada de teste de usabilidade com tarefas reais | Relatório com problemas por gravidade |
+| Fim da R2 | Revisão heurística completa (Nielsen) + auditoria de acessibilidade + 2ª rodada de usabilidade | Correções; métricas do §19 |
+| R3 | Testes de usabilidade dos fluxos de visão computacional e do balcão com leitor de cartão | Ajustes antes de ativar os recursos |
+| Piloto (R2 e R3) | Observação em uso real + questionário SUS | Métricas e backlog de melhorias |
 
 **Participantes:** membros da Avante Tech Jr. Para os resultados não serem enviesados:
 - priorizar quem **não** participa do desenvolvimento do sistema e quem usa o almoxarifado no dia a dia (balcão, retirada, gestão);
@@ -557,7 +589,7 @@ Testes de usabilidade sem gravação de rosto: registro de tela e anotações, c
 
 ## 19. Métricas de experiência
 
-| Métrica | Meta para a 1.0 | Como medir |
+| Métrica | Meta (fim da R2; recursos de visão no fim da R3) | Como medir |
 |---|---|---|
 | SUS (System Usability Scale) | ≥ 80 (faixa "excelente") | Questionário após o teste de usabilidade e após o piloto |
 | Sucesso nas tarefas principais (§3.2) sem ajuda | ≥ 90% | Teste de usabilidade |
@@ -573,8 +605,8 @@ Métricas de uso no produto (ex.: tempo médio de retirada) são calculadas **no
 
 | ID | Decisão | Quando |
 |---|---|---|
-| UX-DA-01 | **Resolvida em 03/11/2026:** "Avante Almoxarifado" com a logo da Avante Tech Jr sem fundo (§6.4). Pendente apenas obter o arquivo vetorial original da logo | Fase 0 |
-| UX-DA-02 | Ferramenta do protótipo navegável | Fase 0 |
-| UX-DA-03 | Estilo de ilustração dos estados vazios | Fase 1 |
-| UX-DA-04 | Sons padrão (ligado/desligado) por modo | Fase 6, após teste no balcão |
+| UX-DA-01 | **Resolvida em 03/11/2026:** "Avante Almoxarifado" com a logo da Avante Tech Jr sem fundo (§6.4). Pendente apenas obter o arquivo vetorial original da logo | R0-14 |
+| UX-DA-02 | **Resolvida em 17/11/2026:** Claude Design para telas, fluxos e protótipos (§17) | — |
+| UX-DA-03 | Estilo de ilustração dos estados vazios | R0 |
+| UX-DA-04 | Sons padrão (ligado/desligado) por modo | R1, após teste no balcão |
 | UX-DA-05 | **Resolvida em 03/11/2026:** membros da Avante Tech Jr, com os critérios do §17 | — |

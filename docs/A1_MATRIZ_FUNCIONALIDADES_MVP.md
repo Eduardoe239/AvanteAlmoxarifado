@@ -1,6 +1,6 @@
-# Matriz de Preservação das Funcionalidades do MVP
+# Anexo A1 — Matriz de Preservação das Funcionalidades do MVP
 
-**Versão:** 1.0 · **Data:** 03/11/2026
+**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 (1.0 de 03/11/2026, referências atualizadas para os volumes v3) · **Status:** Proposto — aguarda aprovação
 **Objetivo:** garantir que **toda** funcionalidade e ideia do MVP (`lab_almoxarifado`) exista no produto definitivo, em versão mais completa. Nenhuma linha desta matriz pode ser removida sem decisão registrada do responsável pelo produto.
 **Fontes inventariadas:** código do backend (37 rotas, `tasks.py`, `email_service.py`, `qr_service.py`), componentes do frontend e os documentos de funcionalidades do MVP (`IMPLEMENTACAO_NOVAS_FUNCIONALIDADES.md`, `UPGRADES_VISAO_NOTAS.md`, `REVISAO-UI-UX.md`, `FRONTEND_LOGIN_CADASTRO_NOTAS_FISCAIS.md`, `ATUALIZACAO_PERFIL_SUPORTE.md`).
 
@@ -32,7 +32,7 @@ Legenda: **Mantida+** = mantida e ampliada · **Redesenhada** = a intenção é 
 | 2.2 | Editar usuário (nome, e-mail, username, setor) | Mantida+ | Com auditoria antes/depois; username mudado não afeta sessões (sessão usa ID interno) | RF-IAM-10, RF-AUD-01 |
 | 2.3 | Reset de senha pelo administrador | Redesenhada | O administrador **envia link de redefinição** (não vê nem escolhe a senha); recuperação também pelo próprio usuário | RF-IAM-06 |
 | 2.4 | Desativar e reativar usuário, com confirmação | Mantida+ | Desativação encerra as sessões na hora | RF-IAM-03 |
-| 2.5 | Excluir usuário preservando o histórico de empréstimos | Redesenhada | Nunca apaga quem tem histórico: anonimiza; bloqueia se houver empréstimo em aberto (corrige INT-07) | RF-IAM-12 |
+| 2.5 | Excluir usuário preservando o histórico de empréstimos | Redesenhada | Nunca apaga quem tem histórico: anonimiza; bloqueia se houver empréstimo em aberto (corrige defeito encontrado no MVP) | RF-IAM-12 |
 | 2.6 | Cadastrar administrador (só por outro admin) | Mantida+ | Papéis granulares (Proprietário, Administrador, Gestor, Operador, Atendente, Auditor, Solicitante) com escopo por almoxarifado; MFA obrigatório | RF-IAM-10, RF-IAM-04 |
 | 2.7 | Setores fixos semeados por migration | Redesenhada | Setores configuráveis por cliente (cada organização tem os seus) | RF-ORG-02 |
 
@@ -56,7 +56,7 @@ Legenda: **Mantida+** = mantida e ampliada · **Redesenhada** = a intenção é 
 | 4.1 | Solicitar empréstimo escolhendo item, quantidade e dias (1–30) | Mantida+ | Carrinho com vários itens; unidades específicas ou quantidade; prazo por política; reservas futuras | RF-EMP-01, 02, 08 |
 | 4.2 | Empréstimo vinculado sempre ao usuário autenticado | Mantida+ | Igual; o operador pode registrar retirada em nome de alguém **com registro de quem operou** | RF-EMP-03, RF-MOV-04 |
 | 4.3 | Proteção contra estoque negativo sob concorrência | Mantida+ | Constraints no banco + idempotência + testes concorrentes no CI | RF-INV-04, RF-MOV-06 |
-| 4.4 | Prazo com 1 dia de tolerância; status ATRASADO calculado dinamicamente | Mantida+ | Tolerância configurável; prazos em UTC com fuso da organização (corrige AUD-002); pendências também atrasam (corrige INT-06) | RF-EMP-07, RF-POL-04 |
+| 4.4 | Prazo com 1 dia de tolerância; status ATRASADO calculado dinamicamente | Mantida+ | Tolerância configurável; prazos em UTC com fuso da organização; pendências também atrasam (corrige dois defeitos encontrados no MVP) | RF-EMP-07, RF-POL-04 |
 | 4.5 | Devolução em duas etapas: membro solicita, admin confirma no recebimento | Mantida+ | Vira política configurável (ligada por padrão), com devolução parcial, ocorrências (dano/falta/perda) e fotos | RF-EMP-04, 05, RF-POL-03 |
 | 4.6 | Admin força devolução de qualquer empréstimo | Mantida+ | Operador/Gestor registra o recebimento, com auditoria | RF-EMP-04 |
 | 4.7 | Meus empréstimos (só do próprio usuário), com estados vazios e erro recuperável | Mantida+ | Linha do tempo de cada empréstimo, renovação, comentários com o almoxarifado | RF-EMP-06, RF-COL-01 |
@@ -70,12 +70,12 @@ Legenda: **Mantida+** = mantida e ampliada · **Redesenhada** = a intenção é 
 | 5.1 | Leitor por câmera no navegador com **seleção de câmera** (integrada, USB, traseira) e preferência pela traseira | Mantida+ | Igual, mais lanterna, zoom quando suportado, troca rápida de câmera e leitor USB/Bluetooth | RF-QR-02, 03 |
 | 5.2 | Moldura de leitura (ROI) e dica "mantenha o QR no retângulo" | Mantida+ | Guia visual adaptado ao tamanho da tela; leitura de vários formatos | RF-QR-02 |
 | 5.3 | Detecção local com `BarcodeDetector` para não enviar o mesmo QR repetidamente | Mantida+ | Toda decodificação no aparelho (BarcodeDetector + zxing-wasm); **idempotência também no servidor** | RF-QR-02, 06 |
-| 5.4 | Leitura robusta de QR pequeno, inclinado e com pouca luz (variações de escala, rotação, contraste) | Mantida+ | Mesmo objetivo no aparelho; métricas de taxa de sucesso; regras de tamanho mínimo e correção de erro na etiqueta | RF-QR-07, `ESTRATEGIA_QR_CODE.md` |
+| 5.4 | Leitura robusta de QR pequeno, inclinado e com pouca luz (variações de escala, rotação, contraste) | Mantida+ | Mesmo objetivo no aparelho; métricas de taxa de sucesso; regras de tamanho mínimo e correção de erro na etiqueta | RF-QR-07, Volume 08 |
 | 5.5 | Fallback OCR do texto impresso no cartão (`AVT-...`) | Redesenhada | Etiqueta com **código curto legível** para digitação manual e busca; OCR deixa de ser necessário para identificar | RF-QR-03 |
 | 5.6 | Painel de leitura: estado da câmera, processamento, confirmação visual, aviso flutuante | Mantida+ | Feedback visual, sonoro e por vibração; ficha do objeto com ações contextuais | RF-QR-04 |
 | 5.7 | Histórico dos últimos 12 eventos de leitura | Mantida+ | "Sessão de leitura" listando tudo o que foi escaneado, com desfazer antes de confirmar; métricas persistidas sem imagem | RF-QR-10 |
 | 5.8 | Amostra da imagem capturada como evidência visual | Redesenhada | Evidência é a **movimentação auditada** (quem, quando, dispositivo); foto só quando o usuário anexa (ex.: ocorrência de dano) — evita guardar imagens à toa (LGPD) | RF-AUD-01, RF-EMP-05 |
-| 5.9 | Entrada automática: leitura de item existente soma +1 ao estoque | Redesenhada | **Leitura identifica, não conta.** Entradas são ações confirmadas; em lote, o modo "recebimento" conta unidades com confirmação (corrige INT-01) | RF-QR-04, 10 |
+| 5.9 | Entrada automática: leitura de item existente soma +1 ao estoque | Redesenhada | **Leitura identifica, não conta.** Entradas são ações confirmadas; em lote, o modo "recebimento" conta unidades com confirmação (corrige defeito encontrado no MVP) | RF-QR-04, 10 |
 | 5.10 | QR com JSON (nome, patrimônio, setor) cria item novo automaticamente | Redesenhada | QR desconhecido abre **cadastro assistido**; nenhum dado de negócio dentro do QR | RF-QR-05, ADR-011 |
 | 5.11 | Notificação por e-mail quando item é cadastrado por QR | Mantida+ | Ver 7.4 | RF-NOT-06 |
 | 5.12 | Geração de QR por item com pré-visualização, download PNG e impressão | Mantida+ | Etiquetas em lote (folhas A4 padrão Pimaco, impressoras térmicas), etiquetas pré-impressas para vincular depois, reimpressão e revogação | RF-QR-07, 08, 11 |
@@ -103,7 +103,7 @@ Legenda: **Mantida+** = mantida e ampliada · **Redesenhada** = a intenção é 
 | 7.5 | Painel do admin separa chamados ativos e concluídos; foto do membro | Mantida+ | Fila com filtros, atribuição a atendente, prazos de resposta (SLA), respostas prontas | RF-SUP-07, 08 |
 | 7.6 | E-mail lembrete 1 dia antes do prazo (uma vez) | Mantida+ | Lembretes configuráveis (ex.: 3 dias e 1 dia), por e-mail, push e no app | RF-NOT-02, 03, 04 |
 | 7.7 | E-mail de atraso no máximo 1 vez por dia, reenviando após falha temporária | Mantida+ | Mesmo controle, via outbox com deduplicação e retry; escalonamento ao gestor após N dias | RF-NOT-04, 05 |
-| 7.8 | E-mail para todos quando um item novo é cadastrado | Redesenhada | "Novidades do catálogo" como **resumo opcional** (diário/semanal) por preferência do usuário — evita uma enxurrada de e-mails (corrige PERF-02) | RF-NOT-06 |
+| 7.8 | E-mail para todos quando um item novo é cadastrado | Redesenhada | "Novidades do catálogo" como **resumo opcional** (diário/semanal) por preferência do usuário — evita uma enxurrada de e-mails (corrige defeito encontrado no MVP) | RF-NOT-06 |
 | 7.9 | SMTP configurável (Gmail com senha de app) | Mantida+ | Configuração pelo painel com teste de envio; credencial protegida | RF-ADM-02 |
 
 ## 8. Experiência, interface e operação
@@ -122,4 +122,4 @@ Legenda: **Mantida+** = mantida e ampliada · **Redesenhada** = a intenção é 
 
 ---
 
-**Verificação desta matriz:** cada linha aponta para um requisito existente no `PLANO_MESTRE_DESENVOLVIMENTO.md` v2.3. A Fase 12 inclui um checklist de aceite que percorre esta matriz linha a linha no ambiente de homologação.
+**Verificação desta matriz:** cada linha aponta para um requisito existente no Volume 02. A saída da R2 (Volume 09 §6) exige este checklist 100% aprovado, linha a linha, em homologação, antes de aposentar o MVP. As funções de visão do MVP (seção 5) são ampliadas pelos recursos de visão computacional da R3 (Volume 05).
