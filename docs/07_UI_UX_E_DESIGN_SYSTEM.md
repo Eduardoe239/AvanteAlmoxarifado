@@ -549,7 +549,7 @@ Toda tela é composta de componentes do design system; componente novo entra pri
 
 ## 17. Processo de design e validação com usuários
 
-**Ferramenta de design:** telas, fluxos e o design system visual são desenhados no **Claude Design** e aprovados pelo responsável **antes** de serem implementados. O código reproduz o design aprovado usando os tokens e componentes do §6–§7; telas geradas direto em código, sem design aprovado, não entram.
+**Ferramenta de design:** telas, fluxos e o design system visual são desenhados no **Claude Design** antes de serem implementados, seguindo o modelo de interface aprovado (§17.1). O código reproduz o design usando os tokens e componentes do §6–§7; telas geradas direto em código, fora do modelo, não entram.
 
 | Release | Atividade | Saída |
 |---|---|---|
@@ -562,6 +562,17 @@ Toda tela é composta de componentes do design system; componente novo entra pri
 | Fim da R2 | Revisão heurística completa (Nielsen) + auditoria de acessibilidade + 2ª rodada de usabilidade | Correções; métricas do §19 |
 | R3 | Testes de usabilidade dos fluxos de visão computacional e do balcão com leitor de cartão | Ajustes antes de ativar os recursos |
 | Piloto (R2 e R3) | Observação em uso real + questionário SUS | Métricas e backlog de melhorias |
+
+### 17.1 Modelo de interface aprovado (17/11/2026)
+
+O responsável aprovou o **modelo de interface** desenhado no Claude Design (https://claude.ai/artifact/2y98JBpZqCK7KYeZDaTBjn, privado ao responsável): design system visual, app no celular (início, leitor, ficha, retirada e devolução, catálogo, empréstimos, contagem por foto, suporte, menu), painel de gestão no notebook (painel, catálogo, movimentações, pedidos, suporte, saúde do sistema) e Estação Avante (cartão, PIN, retirar ou devolver, bandeja, resumo, confirmação, fora do ar).
+
+Regras a partir desta aprovação:
+1. O modelo é o **padrão obrigatório** de aparência e interação de todas as telas, inclusive as que ainda não foram desenhadas (Volume 07 §10).
+2. Uma tela nova que **segue os padrões do modelo** (mesma navegação, componentes, estados e tokens) é desenhada no próprio canvas e implementada sem nova rodada de aprovação; o responsável a vê na entrega da tarefa.
+3. Uma tela que exige **padrão novo** (componente, fluxo ou layout que o modelo não tem) é desenhada no canvas e aprovada pelo responsável antes do código.
+4. A aprovação do modelo não dispensa o teste com usuários (R0-13): ajustes que surgirem do teste atualizam o modelo e são registrados aqui.
+5. Os dados do protótipo são fictícios; nenhum dado real entra no canvas.
 
 **Participantes:** membros da Avante Tech Jr. Para os resultados não serem enviesados:
 - priorizar quem **não** participa do desenvolvimento do sistema e quem usa o almoxarifado no dia a dia (balcão, retirada, gestão);
@@ -606,7 +617,7 @@ Métricas de uso no produto (ex.: tempo médio de retirada) são calculadas **no
 | ID | Decisão | Quando |
 |---|---|---|
 | UX-DA-01 | **Resolvida em 03/11/2026:** "Avante Almoxarifado" com a logo da Avante Tech Jr sem fundo (§6.4). Pendente apenas obter o arquivo vetorial original da logo | R0-14 |
-| UX-DA-02 | **Resolvida em 17/11/2026:** Claude Design para telas, fluxos e protótipos (§17) | — |
+| UX-DA-02 | **Resolvida em 17/11/2026:** Claude Design para telas, fluxos e protótipos; modelo de interface aprovado (§17.1) | — |
 | UX-DA-03 | Estilo de ilustração dos estados vazios | R0 |
 | UX-DA-04 | Sons padrão (ligado/desligado) por modo | R1, após teste no balcão |
 | UX-DA-05 | **Resolvida em 03/11/2026:** membros da Avante Tech Jr, com os critérios do §17 | — |

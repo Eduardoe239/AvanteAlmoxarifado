@@ -74,7 +74,7 @@ Divergência entre fontes: registrar, investigar e propor resolução ao respons
 - Trabalho pesado dentro da API: vai para o worker (ADR-009).
 
 **Interface**
-- Criar tela sem design aprovado no Claude Design, ou desviar do design aprovado sem aprovação.
+- Criar tela fora do modelo de interface aprovado (Volume 07 §17.1), ou introduzir padrão novo de tela sem aprovação do responsável.
 - Usar cor, tamanho, espaçamento ou fonte fora dos tokens; usar emoji como ícone.
 - Escrever nome do produto, logo ou textos de marca direto nos componentes (RF-APP-09).
 - UI otimista em operação de estoque, empréstimo ou documento.
@@ -179,7 +179,7 @@ Nunca usar PASS por conveniência. Percentual de conclusão só com metodologia 
 - Consultas críticas passam pelo `EXPLAIN` do CI; pensar em **disco rígido**: evitar acesso aleatório em massa e escrita desnecessária.
 
 ### 6.3 Frontend (React, TypeScript)
-- Implementar a partir do design aprovado no Claude Design; divergência necessária (técnica ou de acessibilidade) é apontada ao responsável antes.
+- Implementar seguindo o modelo de interface aprovado no Claude Design (Volume 07 §17.1): tela que segue os padrões do modelo é desenhada no canvas e implementada; padrão novo exige aprovação antes. Divergência necessária (técnica ou de acessibilidade) é apontada ao responsável antes.
 - Só componentes e tokens do design system; componente novo entra primeiro no Storybook com estados, temas e teste de acessibilidade.
 - TypeScript estrito; sem `any` sem justificativa; cliente da API gerado.
 - Estados obrigatórios: carregando, vazio, erro, sem permissão, offline, sucesso.

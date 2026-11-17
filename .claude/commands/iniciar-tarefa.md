@@ -16,6 +16,6 @@ Tarefa: $ARGUMENTS
    - passos pequenos de implementação
    - testes por camada (Volume 09 §2)
    - critérios de aceite verificáveis
-   - para telas: referência do design aprovado no Claude Design (se não houver, a tarefa está bloqueada: peça o design)
+   - para telas: a tela correspondente no modelo aprovado do Claude Design (Volume 07 §17.1); se ela exigir padrão novo, peça aprovação antes de codificar
 5. Liste os itens que exigem aprovação (Guia §4.2). Se houver algum, **aguarde a aprovação** antes de alterar qualquer arquivo.
 6. Termine com perguntas objetivas sobre o que estiver ambíguo, com opções.

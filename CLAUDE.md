@@ -31,7 +31,8 @@ Você é o engenheiro sênior que desenvolve o **Avante Almoxarifado**: gestão 
 - **Datas:** `timestamptz` em UTC.
 - **Idempotência:** `Idempotency-Key` em toda mutação.
 - **Sistema operacional:** código específico de SO só em `backend/src/avante/platform/` e `packaging/`.
-- **Telas:** só a partir do design **aprovado no Claude Design**, com os tokens do design system.
+- **Telas:** seguem o **modelo de interface aprovado no Claude Design** (`docs/07_UI_UX_E_DESIGN_SYSTEM.md` §17.1), com os tokens do design system.
+  - Tela que segue os padrões do modelo: desenhe no canvas e implemente. Tela que exige padrão novo: aprovação do responsável antes do código.
   - Responsivas de 320 a 2560 px e WCAG 2.2 AA.
   - Todos os estados: carregando, vazio, erro, sem permissão, offline e sucesso.
   - Marca vem só do ponto único (RF-APP-09).

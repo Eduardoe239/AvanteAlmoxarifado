@@ -45,7 +45,7 @@
 | R0-09 | Backup: destino externo e guarda da chave (DA-04); backup e restauração de banco vazio | M | Procedimento testado |
 | R0-10 | Pesquisa com usuários: entrevistas com 6–8 membros de 3+ papéis; observação do balcão e de um inventário | M | Personas, jornadas atuais, dores priorizadas |
 | R0-11 | Classificação de cartões para validar a navegação | P | Mapa de navegação aprovado |
-| R0-12 | **Claude Design:** design system visual (cores sóbrias, tipografia, componentes) e protótipo navegável de J1–J7 em celular e notebook | G | Protótipo aprovado pelo responsável |
+| R0-12 | ✅ **Aprovado em 17/11/2026 (D-18).** **Claude Design:** design system visual (cores sóbrias, tipografia, componentes) e protótipo navegável de J1–J7 em celular e notebook | G | Protótipo aprovado pelo responsável |
 | R0-13 | Teste do protótipo com 5 usuários e ajustes | M | Relatório de usabilidade e protótipo revisado |
 | R0-14 | Obter o arquivo vetorial original da logo da Avante Tech Jr | P | Arquivo em `brand/` |
 | R0-15 | Fundação do backend: estrutura modular, camada de plataforma, configuração, logs estruturados, `request_id`, health checks, migrations iniciais, Argon2id calibrado no processador real | G | Código + testes |
