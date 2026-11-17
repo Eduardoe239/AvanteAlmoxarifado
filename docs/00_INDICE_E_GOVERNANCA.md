@@ -84,6 +84,8 @@ Fora de `docs/`:
 | D-16 | 17/11/2026 | O **Claude Code** é o executor do desenvolvimento, guiado por `CLAUDE.md` e pelo Volume 13 |
 | D-17 | 17/11/2026 | Documentação refatorada em volumes (v3.0.0), com o padrão de qualidade dos projetos Avante Ponto e Avante Porta |
 | D-18 | 17/11/2026 | **Modelo de interface aprovado**: protótipo navegável no Claude Design (celular, notebook, Estação Avante e design system) é o padrão visual e de interação de todo o sistema (Volume 07 §17.1) |
+| D-19 | 17/11/2026 | Capacidade do desenvolvedor: **12 h por semana** (Volume 12 §2) |
+| D-20 | 17/11/2026 | Protótipo testado com usuários e funcionando (R0-13 concluída; registro a anexar) |
 
 ## 4. Decisões em aberto (consolidado)
 

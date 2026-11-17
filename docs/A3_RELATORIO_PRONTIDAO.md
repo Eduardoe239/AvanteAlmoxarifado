@@ -85,7 +85,7 @@
   - A primeira tarefa (R0-01) é a sua leitura e aprovação.
 - **Metas marcadas com †** (desempenho, disponibilidade, recuperação, visão computacional): são propostas baseadas em estimativa e só se confirmam medindo no notebook real (R0-05) e no protocolo de avaliação (R3).
 - **Notebook:** o modelo exato ainda não é conhecido. A presença de TPM 2.0, o religamento automático pela BIOS e a saúde do HD são verificados na R0-02 e na R0-04.
-- **Capacidade:** as horas por semana disponíveis não foram informadas. Por isso, o Volume 12 não promete datas antes da calibração (R0-20).
+- **Capacidade:** 12 h por semana, informadas em 17/11/2026. A previsão preliminar da R0 é de cerca de 9 semanas e é refeita com as horas reais na R0-20.
 - **Questões legais e regulatórias:** o Volume 11 lista obrigações para orientar decisões e não substitui advogado nem organismo de certificação.
 - **Versões de plataforma:** foram conferidas em novembro de 2026 e mudam com o tempo; a ADR-022 define como mantê-las atualizadas.
 
@@ -106,7 +106,6 @@
 | Domínio e escolha entre VPN e túnel | R0-07 |
 | Celulares (Android e iPhone) e tablet para os testes | R0-08 |
 | Destino do backup externo e guarda da chave | R0-09 |
-| Agenda com 6–8 membros para entrevistas e 5 para o teste do protótipo | R0-10, R0-13 |
-| Protótipo no Claude Design aprovado | R0-12 |
+| Agenda com 6–8 membros para entrevistas; anexar o registro do teste do protótipo (já feito) | R0-10, R0-13 |
 | Arquivo vetorial original da logo | R0-14 |
-| Horas por semana disponíveis | R0-20 |
+| Medir horas reais por tamanho de tarefa (12 h/semana já informadas) | R0-20 |

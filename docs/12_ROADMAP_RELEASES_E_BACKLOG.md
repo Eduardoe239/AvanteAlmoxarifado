@@ -23,6 +23,10 @@
 | G | ≈ 8 h | Fluxo completo (ex.: empréstimo com aprovação e devolução) |
 | GG | Proibido | Dividir em tarefas menores antes de começar |
 
+**Capacidade informada:** **H = 12 h/semana** (responsável, 17/11/2026).
+
+**Previsão preliminar da R0** (antes da calibração): tarefas restantes = 7 P + 5 M + 6 G = 14 + 20 + 48 = **82 h**; com margem de 30% ≈ **107 h**; ÷ 12 h ≈ **9 semanas**. A previsão é refeita na R0-20 com as horas reais.
+
 **Calibração:** as 4 primeiras semanas da R0 medem as horas reais por tamanho e as horas por semana disponíveis (**H**). A partir daí, a previsão de cada release = soma dos tamanhos ÷ H, com margem de 30% para imprevistos, provas e férias. A previsão é refeita ao fim de cada release e registrada no Anexo A3. **Datas não são prometidas antes da calibração.**
 
 **Ritmo sustentável:** semanas de provas reduzem H; a previsão considera o calendário acadêmico. Nenhuma tarefa de risco alto é aceita na pressa.
@@ -43,17 +47,17 @@
 | R0-07 | Validação de rede: domínio (DA-02), certificado por DNS-01, HTTPS na rede local e fora, VPN ou túnel (DA-01), proteção de DNS rebinding do roteador | G | Relatório e escolha registrada na ADR-007 |
 | R0-08 | Câmera lendo QR por HTTPS em Android e iPhone, dentro e fora da rede; Web Push; definição da matriz de aparelhos (DA-05) | M | Matriz no Volume 09 §4 |
 | R0-09 | Backup: destino externo e guarda da chave (DA-04); backup e restauração de banco vazio | M | Procedimento testado |
-| R0-10 | Pesquisa com usuários: entrevistas com 6–8 membros de 3+ papéis; observação do balcão e de um inventário | M | Personas, jornadas atuais, dores priorizadas |
+| R0-10 | Pesquisa com usuários: entrevistas com 6–8 membros de 3+ papéis; observação do balcão e de um inventário. Com o modelo já aprovado e testado, o foco passa a ser regras do dia a dia (prazos, políticas, itens críticos) para as telas que ainda não foram desenhadas | M | Regras e dores priorizadas |
 | R0-11 | Classificação de cartões para validar a navegação | P | Mapa de navegação aprovado |
 | R0-12 | ✅ **Aprovado em 17/11/2026 (D-18).** **Claude Design:** design system visual (cores sóbrias, tipografia, componentes) e protótipo navegável de J1–J7 em celular e notebook | G | Protótipo aprovado pelo responsável |
-| R0-13 | Teste do protótipo com 5 usuários e ajustes | M | Relatório de usabilidade e protótipo revisado |
+| R0-13 | ✅ **Concluída em 17/11/2026 (D-20):** protótipo testado com usuários e funcionando, segundo o responsável. Pendente apenas anexar o registro em `docs/evidencias/R0/` (participantes por papel, tarefas, problemas e ajustes) | M | Relatório de usabilidade e protótipo revisado |
 | R0-14 | Obter o arquivo vetorial original da logo da Avante Tech Jr | P | Arquivo em `brand/` |
 | R0-15 | Fundação do backend: estrutura modular, camada de plataforma, configuração, logs estruturados, `request_id`, health checks, migrations iniciais, Argon2id calibrado no processador real | G | Código + testes |
 | R0-16 | Fundação do frontend: SPA/PWA, tokens fiéis ao design aprovado, temas claro/escuro, componentes base no Storybook, ponto único de marca | G | Design system v0.1 em código |
 | R0-17 | CI bloqueante: lint, tipos, testes, migrations (vazio e N-1), build, SAST, dependências, segredos, licenças, SBOM, job de desempenho; testes da camada de plataforma também em Windows | G | CI verde sem etapa mascarada |
 | R0-18 | Pacote `.deb` mínimo + `avante status`/`doctor` básicos, instalando em VM limpa e no notebook | G | Instalação reproduzível |
 | R0-19 | Revisão do modelo de ameaças (Volume 06) com a infraestrutura real | P | Volume 06 atualizado |
-| R0-20 | Calibração de capacidade (§2) | P | H e horas por tamanho registrados |
+| R0-20 | Calibração de capacidade (§2): H = 12 h/semana já informado; medir as horas reais por tamanho | P | Horas por tamanho registradas e previsão refeita |
 
 ### R1 — Núcleo (uso real em paralelo ao MVP)
 **Conteúdo:** identidade e segurança (RF-IAM, exceto IAM-05); organização (RF-ORG); catálogo (RF-CAT-01..07); unidades e saldos (RF-INV-01..05); movimentações com ledger (RF-MOV-01..06); empréstimos (RF-EMP-01..07); QR e etiquetas (RF-QR-01..08, 10, 11, 14); políticas (RF-POL); aplicativo e tempo real (RF-APP-01..07, 09); notificações (RF-NOT-01, 02, 04, 05); suporte (RF-SUP-01..07, 10); colaboração (RF-COL-01); relatórios (RF-REL-01, 03, 04); auditoria (RF-AUD); administração (RF-ADM-01..03, 05, 06); verificação básica de hardware (RF-COM-01).
