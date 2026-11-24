@@ -1,6 +1,6 @@
 # Volume 12 — Roadmap, Releases e Backlog
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa
 **Relação:** ADR-026; critérios de saída no Volume 09 §6; forma de executar no Volume 13.
 
@@ -38,11 +38,11 @@
 
 | ID | Tarefa | Tam. | Saída |
 |---|---|---|---|
-| R0-01 | Aprovar os volumes v3.0.0 e responder às decisões em aberto que já podem ser respondidas | P | Registro no Volume 00 |
-| R0-02 | Preparar o notebook: inventário do hardware, `memtest86+`, SMART inicial, BIOS (religamento automático, virtualização), instalação do Debian 13 ou Ubuntu Server sem interface gráfica | M | Ficha do notebook (Volume 04 §3) |
+| R0-01 | ✅ **Concluída em 24/11/2026 (D-22).** Aprovar os volumes v3.0.0 e responder às decisões em aberto que já podem ser respondidas | P | Registro no Volume 00 |
+| R0-02 | Preparar o notebook: inventário do hardware, `memtest86+`, SMART inicial, BIOS (religamento automático, virtualização), instalação do Debian 13 ou Ubuntu Server sem interface gráfica. **O MVP não roda neste notebook** (roda no computador do responsável, D-22), então reinstalar o sistema não o afeta; conferir só se há arquivos de outras pessoas a preservar. Ficha parcial em `docs/evidencias/R0/FICHA_NOTEBOOK_SERVIDOR.md` | M | Ficha do notebook (Volume 04 §3) |
 | R0-03 | Reavaliar PostgreSQL 19 × 18 e fixar as versões (ADR-022) | P | Registro na ADR-022 |
-| R0-04 | Script `ops/verificar-hardware.sh` e execução no notebook; decisão de criptografia (ADR-012) assinada | M | Relatório + decisão de risco |
-| R0-05 | Teste de carga sintético no notebook: PostgreSQL ajustado (Volume 04 §4.2) + API mínima + 100 mil movimentações geradas + k6 | G | Relatório dentro do orçamento (RNF-05, RNF-20) ou plano de mitigação |
+| R0-04 | Script `ops/verificar-hardware.sh` e execução no notebook; decisão de criptografia (ADR-012) assinada; **calibração do Argon2id no processador real** (≤ 300 ms, respeitando o mínimo OWASP; Volume 04 §4.4) | M | Relatório + decisão de risco + parâmetros do Argon2id |
+| R0-05 | Teste de carga sintético no notebook: PostgreSQL ajustado (Volume 04 §4.2) + API mínima + 100 mil movimentações geradas + k6. A **API mínima é um protótipo descartável de carga em `ops/carga/`**: não vira código do produto nem é importada por ele (D-22) | G | Relatório dentro do orçamento (RNF-05, RNF-20) ou plano de mitigação |
 | R0-06 | Medição HD × SSD (opcional, se houver SSD disponível) | P | Dados para a decisão do Volume 04 §10 |
 | R0-07 | Validação de rede: domínio (DA-02), certificado por DNS-01, HTTPS na rede local e fora, VPN ou túnel (DA-01), proteção de DNS rebinding do roteador | G | Relatório e escolha registrada na ADR-007 |
 | R0-08 | Câmera lendo QR por HTTPS em Android e iPhone, dentro e fora da rede; Web Push; definição da matriz de aparelhos (DA-05) | M | Matriz no Volume 09 §4 |
@@ -50,9 +50,9 @@
 | R0-10 | Pesquisa com usuários: entrevistas com 6–8 membros de 3+ papéis; observação do balcão e de um inventário. Com o modelo já aprovado e testado, o foco passa a ser regras do dia a dia (prazos, políticas, itens críticos) para as telas que ainda não foram desenhadas | M | Regras e dores priorizadas |
 | R0-11 | Classificação de cartões para validar a navegação | P | Mapa de navegação aprovado |
 | R0-12 | ✅ **Aprovado em 17/11/2026 (D-18).** **Claude Design:** design system visual (cores sóbrias, tipografia, componentes) e protótipo navegável de J1–J7 em celular e notebook | G | Protótipo aprovado pelo responsável |
-| R0-13 | ✅ **Concluída em 17/11/2026 (D-20):** protótipo testado com usuários e funcionando, segundo o responsável. Pendente apenas anexar o registro em `docs/evidencias/R0/` (participantes por papel, tarefas, problemas e ajustes) | M | Relatório de usabilidade e protótipo revisado |
+| R0-13 | ⏸ **Em espera (D-22):** protótipo testado com usuários e funcionando, segundo o responsável (D-20), mas a tarefa só é aceita com o registro do teste em `docs/evidencias/R0/` (participantes por papel, sem dados pessoais; tarefas, problemas e ajustes) | M | Relatório de usabilidade e protótipo revisado |
 | R0-14 | Obter o arquivo vetorial original da logo da Avante Tech Jr | P | Arquivo em `brand/` |
-| R0-15 | Fundação do backend: estrutura modular, camada de plataforma, configuração, logs estruturados, `request_id`, health checks, migrations iniciais, Argon2id calibrado no processador real | G | Código + testes |
+| R0-15 | Fundação do backend: estrutura modular, camada de plataforma, configuração, logs estruturados, `request_id`, health checks, migrations iniciais, Argon2id com **parâmetros configuráveis** (os valores vêm da calibração da R0-04); **define os comandos de verificação local e os registra no `CLAUDE.md`** | G | Código + testes |
 | R0-16 | Fundação do frontend: SPA/PWA, tokens fiéis ao design aprovado, temas claro/escuro, componentes base no Storybook, ponto único de marca | G | Design system v0.1 em código |
 | R0-17 | CI bloqueante: lint, tipos, testes, migrations (vazio e N-1), build, SAST, dependências, segredos, licenças, SBOM, job de desempenho; testes da camada de plataforma também em Windows | G | CI verde sem etapa mascarada |
 | R0-18 | Pacote `.deb` mínimo + `avante status`/`doctor` básicos, instalando em VM limpa e no notebook | G | Instalação reproduzível |

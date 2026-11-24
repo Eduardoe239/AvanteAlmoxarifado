@@ -2,7 +2,7 @@
 
 **Produto:** Avante Almoxarifado · **Organização:** Avante Tech Jr — setor de Sistemas Embarcados
 **Responsável:** Luís Eduardo de Sousa Barbosa (Coordenador de Sistemas Embarcados)
-**Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 
 ---
 
@@ -62,7 +62,7 @@ O mesmo código atende duas situações. As diferenças são de configuração, 
 | Solicitante | Membro em geral | Catálogo, empréstimos, reservas, chamados |
 | Auditor | Leitura (ex.: conselho, fiscal) | Relatórios e histórico |
 
-**Escala de referência da Edição Avante:** cerca de **30 pessoas com acesso**, com uso simultâneo baixo (estimativa de pico: até 10 pessoas ativas ao mesmo tempo, a confirmar na R0).
+**Escala de referência da Edição Avante:** cerca de **30 pessoas com acesso**, que **não usam o sistema ao mesmo tempo** (D-13). O desempenho é projetado com uma **margem de 10 usuários simultâneos** (RNF-05), confirmada no teste de carga da R0-05; esse número é margem de projeto, não uso esperado (D-22).
 
 ## 6. Restrições que moldam o projeto
 
@@ -71,7 +71,7 @@ O mesmo código atende duas situações. As diferenças são de configuração, 
 | R-01 | Servidor da Avante é um **notebook antigo, memória DDR3, disco rígido (HD)** | Orçamento de recursos rígido (Volume 04); nada pesado roda no servidor; visão computacional roda nos aparelhos e nas estações |
 | R-02 | **Um único desenvolvedor** | Entregas em releases pequenas e utilizáveis (Volume 12); automação de testes e de qualidade em vez de revisão manual extensa; escopo priorizado |
 | R-03 | Esse notebook **não roda Windows 11** oficialmente (processador anterior à 8ª geração Intel, sem TPM 2.0 provável) | Servidor da Avante em Linux; suporte a Windows entregue para clientes com hardware compatível (R4), com a arquitetura preparada desde o início |
-| R-04 | O MVP continua em uso até a substituição | Coexistência; importação dos dados do MVP antes de aposentá-lo |
+| R-04 | O MVP continua em uso até a substituição; ele roda no computador do responsável, não no notebook-servidor (D-22) | Coexistência; importação dos dados do MVP antes de aposentá-lo; preparar o notebook não afeta o MVP |
 | R-05 | Repositório público | Nenhum segredo, dado real ou falha não corrigida publicados; repositório privado antes da venda |
 | R-06 | Produto vendável no futuro | Licenças de terceiros compatíveis com software fechado desde já; marca centralizada; requisitos legais e regulatórios (LGPD, Anatel para hardware) no Volume 11 |
 

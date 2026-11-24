@@ -1,6 +1,6 @@
 # Volume 05 — Visão Computacional e Sistemas Embarcados
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa — setor de Sistemas Embarcados
 **Relação:** detalha RF-CV, RF-EMB, RNF-23, RNF-24, ADR-024, ADR-025 e ADR-028.
 

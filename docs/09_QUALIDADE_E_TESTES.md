@@ -1,6 +1,6 @@
 # Volume 09 — Qualidade e Testes
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa
 **Relação:** comprova os RNF do Volume 02; define a Definição de Pronto usada pelo Volume 12 e pelo Guia de Execução (Volume 13).
 
@@ -26,7 +26,7 @@
 | Migrations | Alembic | Vazio → atual; N-1 com dados → N; `alembic check` sem divergência | CI |
 | Contrato | OpenAPI + cliente TypeScript gerado | Mudança incompatível quebra o CI | CI |
 | Tempo real | Integração de SSE e Web Push | Entrega, reconexão, filtragem por permissão | CI |
-| Plataforma | Testes da camada `platform/` | Serviços, caminhos, permissões, backup e restauração | CI (Linux e Windows) |
+| Plataforma | Testes da camada `backend/src/avante/platform/` | Serviços, caminhos, permissões, backup e restauração | CI (Linux e Windows) |
 | Frontend | Vitest + Testing Library | Componentes, hooks, formatação de datas | CI |
 | E2E | Playwright (Chromium, WebKit, Firefox, perfis móveis) | Fluxos críticos de cada papel, inclusive dois usuários interagindo | CI (fluxos críticos a cada PR; suíte completa por noite) |
 | Acessibilidade | axe-core + revisão manual com TalkBack, VoiceOver e NVDA | RNF-04 | CI + manual por release |
@@ -43,7 +43,7 @@
 
 ## 3. Testes no Perfil Mínimo (notebook real)
 
-O notebook da Avante é o **ambiente de homologação** a partir da R0 e o ambiente de produção a partir da R1. O que é medido nele em cada release:
+O notebook da Avante é o **ambiente de homologação** da R0 até a entrada em produção, na R1. A partir daí, a homologação passa para uma **VM limitada a 2 vCPU e 4 GB** (Perfil Mínimo) e para o **job de desempenho do CI**. No notebook de produção, medições só em **janela de manutenção, com backup verificado e em banco separado** do banco de produção, com dados sintéticos (D-22; Volume 13 §7). Testes destrutivos (queda de energia, disco cheio, atualização com reversão) não são feitos no notebook depois que ele entra em produção: vão para a VM. O que é medido em cada release:
 
 | Teste | Como | Critério |
 |---|---|---|

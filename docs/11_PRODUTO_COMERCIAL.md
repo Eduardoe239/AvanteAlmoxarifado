@@ -1,6 +1,6 @@
 # Volume 11 — Produto Comercial
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa
 **Relação:** RF-COM, RF-DAT, RF-EMB-07, RF-ADM-04; ADR-014, ADR-016, ADR-022, ADR-023; Volumes 01, 04, 05 e 06.
 **Aviso:** este volume organiza as decisões de negócio e as obrigações a cumprir. Preço, contrato e textos legais são **decisões do responsável e da diretoria da Avante Tech Jr**, com revisão de advogado; nada aqui é parecer jurídico.

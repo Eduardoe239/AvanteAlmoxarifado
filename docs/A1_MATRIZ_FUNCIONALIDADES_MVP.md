@@ -1,6 +1,6 @@
 # Anexo A1 — Matriz de Preservação das Funcionalidades do MVP
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 (1.0 de 03/11/2026, referências atualizadas para os volumes v3) · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 (1.0 de 03/11/2026, referências atualizadas para os volumes v3) · **Status:** Aprovado em 24/11/2026
 **Objetivo:** garantir que **toda** funcionalidade e ideia do MVP (`lab_almoxarifado`) exista no produto definitivo, em versão mais completa. Nenhuma linha desta matriz pode ser removida sem decisão registrada do responsável pelo produto.
 **Fontes inventariadas:** código do backend (37 rotas, `tasks.py`, `email_service.py`, `qr_service.py`), componentes do frontend e os documentos de funcionalidades do MVP (`IMPLEMENTACAO_NOVAS_FUNCIONALIDADES.md`, `UPGRADES_VISAO_NOTAS.md`, `REVISAO-UI-UX.md`, `FRONTEND_LOGIN_CADASTRO_NOTAS_FISCAIS.md`, `ATUALIZACAO_PERFIL_SUPORTE.md`).
 

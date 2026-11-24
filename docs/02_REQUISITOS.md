@@ -1,6 +1,6 @@
 # Volume 02 — Requisitos
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa
 
 ---

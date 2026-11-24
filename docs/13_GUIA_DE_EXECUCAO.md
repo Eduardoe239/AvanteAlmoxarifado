@@ -1,6 +1,6 @@
 # Volume 13 — Guia de Execução para o Claude Code
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa
 **Substitui:** Guia Obrigatório de Execução v2.3. Incorpora a Diretriz Mestra de 03/11/2026.
 **Para quem:** o Claude Code (executor do desenvolvimento) e o responsável (que planeja, aprova e aceita). Resumo operacional em `CLAUDE.md` na raiz; comandos e o agente revisor em `.claude/`.
@@ -67,7 +67,7 @@ Divergência entre fontes: registrar, investigar e propor resolução ao respons
 - Desligar verificação de TLS, CSRF, CSP ou autorização "temporariamente".
 
 **Plataforma, dependências e licenças**
-- Código específico de sistema operacional fora de `platform/` e `packaging/` (ADR-020).
+- Código específico de sistema operacional fora de `backend/src/avante/platform/` e `packaging/` (ADR-020).
 - Dependência ou modelo com licença proibida pela ADR-016 (ex.: AGPL, incluindo Ultralytics YOLO e PyMuPDF).
 - Introduzir dependência sem avaliar manutenção, licença, vulnerabilidades, tamanho e **memória em execução** (o servidor tem 4 GB).
 - Rodar inferência de visão computacional no servidor (ADR-024).
@@ -123,7 +123,7 @@ Usar o modo de planejamento do Claude Code para tarefas M e G.
 1. Mudanças pequenas, com testes escritos junto (de preferência antes) do código.
 2. Contrato de API alterado → OpenAPI e cliente TypeScript atualizados no mesmo diff.
 3. Tela entregue responsiva, acessível e com todos os estados desde a primeira versão.
-4. Rodar localmente: lint, tipos, testes, migrations e build pertinentes (comandos no `CLAUDE.md`).
+4. Rodar localmente: lint, tipos, testes, migrations e build pertinentes. Os comandos são definidos na R0-15 e registrados no `CLAUDE.md` (depois reunidos no `make check` da R0-17); até lá, valem os comandos que o plano de cada tarefa listar (D-22).
 5. Revisar o próprio diff e procurar segredos.
 6. Documentação afetada atualizada no mesmo diff.
 7. Bloqueado por algo externo (hardware, decisão, acesso)? Parar, declarar **HOLD** e dizer o que desbloqueia. Não contornar.
@@ -201,7 +201,7 @@ Nunca usar PASS por conveniência. Percentual de conclusão só com metodologia 
 - Gravação em dispositivo e qualquer fusível: só com autorização (§4.1).
 
 ### 6.6 Paridade Linux × Windows
-- Código de SO só em `platform/` e `packaging/`; `pathlib` sempre; nada de caminho ou permissão Unix fixos.
+- Código de SO só em `backend/src/avante/platform/` e `packaging/`; `pathlib` sempre; nada de caminho ou permissão Unix fixos.
 - Testes da camada de plataforma em Ubuntu e Windows desde a R0; paridade completa exigida na R4.
 
 ### 6.7 Tempo real e interação
@@ -220,8 +220,10 @@ Nunca usar PASS por conveniência. Percentual de conclusão só com metodologia 
 |---|---|---|---|
 | Desenvolvimento | Máquina do responsável / ambiente do Claude Code | Sintéticos | Tudo dentro deste guia |
 | CI | GitHub Actions (Ubuntu; Windows para a camada de plataforma) | Sintéticos | Editar workflows, sem mascarar etapas |
-| Homologação | Notebook do laboratório (até a R1) e VM Windows (R4) | Sintéticos; cópia isolada do MVP na R2 | Executar só o roteiro aprovado da tarefa |
+| Homologação | Notebook do laboratório **até a entrada em produção, na R1**. Depois: VM limitada a 2 vCPU e 4 GB (Perfil Mínimo) e o job de desempenho do CI; VM Windows na R4 | Sintéticos; cópia isolada do MVP na R2 | Executar só o roteiro aprovado da tarefa |
 | Produção | Notebook do laboratório (a partir da R1) e computadores dos clientes | Reais | **Nada** sem autorização explícita e backup comprovado |
+
+**Medições no notebook depois que ele entra em produção** (D-22): só em janela de manutenção, com backup verificado (restauração testada) e em **banco separado** do banco de produção, com dados sintéticos. Nunca contra o banco de produção.
 
 ## 8. Comandos do projeto (`.claude/commands/`)
 

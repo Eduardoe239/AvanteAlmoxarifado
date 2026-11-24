@@ -1,6 +1,6 @@
 # Anexo A3 — Relatório de Prontidão para o Início do Desenvolvimento
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Substitui:** Relatório de Prontidão de 03/11/2026 (conjunto 2.3).
 **Pergunta:** a documentação está completa, consistente e executável para iniciar o desenvolvimento, considerando:
 - notebook antigo (DDR3, HD) como servidor e banco;
@@ -64,6 +64,8 @@
 | 10 | Contraste WCAG das combinações do design system | 30/30 aprovadas |
 | 11 | `.claude/settings.json` é JSON válido | OK |
 
+**Nova execução em 24/11/2026 (R0-01, conjunto v3.1.0):** `python docs/tools/validar_consistencia.py .` → 154 RF, 24 RNF e 28 ADRs definidos; 24 arquivos verificados; **0 erros** (cobre as verificações 1–5, 7 e 8). Verificação 10: `brand/tools/verificar_contraste.py` → 30/30 aprovadas. Verificação 11: `settings.json` válido. As verificações 6 e 9 não são automáticas no script e não foram refeitas nesta execução, porque a R0-01 não mudou requisitos, releases nem o orçamento de memória.
+
 ### 3.2 Problemas encontrados e corrigidos durante a validação
 
 | # | Problema | Correção |
@@ -93,7 +95,7 @@
 
 | # | Condição | Situação |
 |---|---|---|
-| C1 | Aprovação do conjunto v3.0.0 (ou ajustes) | Aguardando o responsável |
+| C1 | Aprovação do conjunto v3.0.0 (ou ajustes) | ✅ Aprovado em 24/11/2026, com ajustes, como v3.1.0 (D-22) |
 | C2 | Autorização para publicar a documentação na branch `definitivo` (push) | Aguardando o responsável |
 | C3 | Autorização explícita para iniciar a R0 com o Claude Code | Aguardando o responsável |
 

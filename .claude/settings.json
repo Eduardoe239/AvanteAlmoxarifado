@@ -4,6 +4,8 @@
       "Bash(git push:*)",
       "Bash(git checkout main:*)",
       "Bash(git switch main:*)",
+      "Bash(git branch -f main:*)",
+      "Bash(git update-ref:*)",
       "Bash(git merge:*)",
       "Bash(git rebase:*)",
       "Bash(git reset --hard:*)",

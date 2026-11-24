@@ -1,6 +1,6 @@
 # Marca — Avante Almoxarifado (Avante Tech Jr)
 
-Arquivos de marca usados pelo aplicativo. As regras de uso completas estão em `docs/ESPECIFICACAO_UI_UX.md` §6.4.
+Arquivos de marca usados pelo aplicativo. As regras de uso completas estão no Volume 07 §6.4 (`docs/07_UI_UX_E_DESIGN_SYSTEM.md`).
 
 | Arquivo | Onde usar |
 |---|---|

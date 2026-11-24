@@ -1,6 +1,6 @@
 # Volume 04 — Hardware, Infraestrutura e Capacidade
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa
 **Relação:** detalha ADR-002, ADR-012, ADR-023 e RNF-05, RNF-06, RNF-20, RNF-21, RNF-22.
 
@@ -29,6 +29,8 @@ O servidor da Avante é um **notebook antigo**: memória **DDR3**, disco **rígi
 | Energia | Bateria funcional **ou** nobreak | Nobreak | Nobreak |
 | SO | Debian 13 ou Ubuntu Server 24.04/26.04 LTS **sem interface gráfica** | Idem | Idem ou Windows 11 Pro |
 | Metas de desempenho (RNF-05) | p95 < 500 ms leitura · < 800 ms estoque · tempo real < 3 s | < 300 ms · < 500 ms · < 2 s | Iguais ao Recomendado |
+
+**Notebook real da Avante** (ficha em `docs/evidencias/R0/FICHA_NOTEBOOK_SERVIDOR.md`, D-22): tem **8 GB** de memória DDR3 e HD. O orçamento de memória dos serviços **continua o do Perfil Mínimo** (§4.1, 4 GB), porque o produto precisa funcionar nele; a memória extra é folga, não orçamento.
 
 **Abaixo do Mínimo** (ex.: 2 GB de memória ou processador de 32 bits), o instalador recusa e indica a melhoria necessária (RF-COM-01). Pentes de DDR3 para notebook são baratos; se o notebook tiver 2 GB, a troca para 4 ou 8 GB resolve.
 

@@ -1,8 +1,8 @@
 # Volume 07 — UI, UX e Design System
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa
-**Histórico:** 1.0 (03/11/2026) especificação inicial · 1.1 marca e participantes · 3.0.0 integrada ao conjunto de volumes; telas de visão computacional, estação e leitor de cartão (§8.9, §8.10, J11–J13); desenho no Claude Design (§17); processo por release
+**Histórico:** 1.0 (03/11/2026) especificação inicial · 1.1 marca e participantes · 3.0.0 integrada ao conjunto de volumes; telas de visão computacional, estação e leitor de cartão (§8.9, §8.10, J11–J13); desenho no Claude Design (§17); processo por release · 3.1.0 (24/11/2026) aprovada sem mudança de conteúdo neste volume (D-22)
 **Relação:** detalha RF-APP, RF-CV (experiência), RF-EMB-08, RNF-03, RNF-04, RNF-18, RNF-19, ADR-021 e RF-APP-09 (Volume 02).
 **Vale para:** todas as telas, em celular, tablet e notebook, nos temas claro e escuro.
 **Regra de ouro:** nenhuma tela entra em produção sem cumprir a Definição de Pronto de UI (§18).

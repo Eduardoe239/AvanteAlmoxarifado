@@ -1,6 +1,6 @@
 # Volume 10 — Operação, Backup, Atualização e Incidentes
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa
 **Relação:** RNF-06, RNF-07, RNF-13, RNF-14, RNF-21, RNF-22; ADR-002, ADR-007, ADR-012, ADR-013; Volume 04 (hardware) e Volume 06 (segurança).
 **Público:** quem administra a instalação (na Avante, o Proprietário e um Administrador substituto; no cliente, o responsável de TI indicado no contrato).

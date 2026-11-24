@@ -1,7 +1,7 @@
 # Volume 00 — Índice e Governança da Documentação
 
 **Produto:** Avante Almoxarifado — gestão de estoque, patrimônio e empréstimos com QR Code, visão computacional e dispositivos embarcados
-**Organização:** Avante Tech Jr · **Versão do conjunto:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Organização:** Avante Tech Jr · **Versão do conjunto:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa — Coordenador de Sistemas Embarcados
 
 ---
@@ -27,6 +27,10 @@
 | A1 | [Matriz de Funcionalidades do MVP](A1_MATRIZ_FUNCIONALIDADES_MVP.md) | Toda função do MVP e o requisito que a preserva | Na R2 (aposentadoria do MVP) |
 | A2 | [Análise de Rota](A2_ANALISE_DE_ROTA.md) | Alternativas avaliadas e caminho escolhido | Ao questionar uma escolha de rota |
 | A3 | [Relatório de Prontidão](A3_RELATORIO_PRONTIDAO.md) | Validação deste conjunto e condições para iniciar | Antes de autorizar o início |
+
+Também em `docs/`:
+- `evidencias/<release>/`: evidências de cada release (Volume 09 §9).
+- `tools/validar_consistencia.py`: validação automática da consistência da documentação (Anexo A3 §3.1).
 
 Fora de `docs/`:
 - `CLAUDE.md` e `.claude/`: instruções, comandos, revisor e travas de permissão do Claude Code.
@@ -78,15 +82,16 @@ Fora de `docs/`:
 | D-10 | 03/11/2026 | Repositório público, sem o relatório de auditoria do MVP |
 | D-11 | 17/11/2026 | Servidor da Avante: notebook antigo, memória DDR3, **HD**; requisitos mínimos básicos |
 | D-12 | 17/11/2026 | Um único desenvolvedor (o responsável) |
-| D-13 | 17/11/2026 | Cerca de 30 pessoas com acesso, não simultâneas |
+| D-13 | 17/11/2026 | Cerca de 30 pessoas com acesso, não simultâneas (10 simultâneos é margem de projeto: D-22) |
 | D-14 | 17/11/2026 | Produto vendido também como **sistema embarcado** de gestão de estoque inteligente/automatizado com **visão computacional** |
 | D-15 | 17/11/2026 | Telas e protótipos desenhados no **Claude Design** |
 | D-16 | 17/11/2026 | O **Claude Code** é o executor do desenvolvimento, guiado por `CLAUDE.md` e pelo Volume 13 |
 | D-17 | 17/11/2026 | Documentação refatorada em volumes (v3.0.0), com o padrão de qualidade dos projetos Avante Ponto e Avante Porta |
 | D-18 | 17/11/2026 | **Modelo de interface aprovado**: protótipo navegável no Claude Design (celular, notebook, Estação Avante e design system) é o padrão visual e de interação de todo o sistema (Volume 07 §17.1) |
 | D-19 | 17/11/2026 | Capacidade do desenvolvedor: **12 h por semana** (Volume 12 §2) |
-| D-20 | 17/11/2026 | Protótipo testado com usuários e funcionando (R0-13 concluída; registro a anexar) |
+| D-20 | 17/11/2026 | Protótipo testado com usuários e funcionando (R0-13 concluída; registro a anexar). Revista em D-22: R0-13 **em espera** até o registro ser anexado |
 | D-21 | 17/11/2026 | Nenhum código do MVP é copiado ou adaptado; o MVP é só referência de funcionalidades e de defeitos a evitar (ADR-001) |
+| D-22 | 24/11/2026 | **Conjunto de documentação aprovado (R0-01)** como v3.1.0 (v3.0.0 com os ajustes abaixo); volumes "Aprovado em 24/11/2026" e ADR-001 a ADR-028 "Aceita em 24/11/2026". Ajustes: (1) ~30 pessoas com acesso, sem uso simultâneo; 10 simultâneos é **margem de projeto** do RNF-05, confirmada na R0-05 (Volume 01 §5, Anexo A2); (2) R0-13 volta para **em espera** até o registro do teste do protótipo em `docs/evidencias/R0/`; (3) a API mínima da R0-05 é um **protótipo descartável** em `ops/carga/`, fora do código do produto; (4) calibração do Argon2id passa da R0-15 para a R0-04; a R0-15 usa parâmetros configuráveis; (5) o MVP roda no computador do responsável, não no notebook-servidor (R0-02, Volume 01 R-04); (6) notebook é homologação até a produção (R1); depois, homologação em VM de 2 vCPU/4 GB e no job de desempenho do CI; medições no notebook de produção só em janela de manutenção, com backup verificado e banco separado (Volume 13 §7, Volume 09 §3); (7) comandos de verificação definidos na R0-15 e registrados no `CLAUDE.md`; até lá, os do plano de cada tarefa; (8) `brand/README.md` aponta para o Volume 07; (9) `CLAUDE.md` inclui `xfail` e `eslint-disable`; deny de `git branch -f main` e `git update-ref`; caminho único da camada de plataforma: `backend/src/avante/platform/`; (10) ficha do notebook em `docs/evidencias/R0/FICHA_NOTEBOOK_SERVIDOR.md`: o notebook tem 8 GB, mas o orçamento de memória continua o do Perfil Mínimo (4 GB) |
 
 ## 4. Decisões em aberto (consolidado)
 

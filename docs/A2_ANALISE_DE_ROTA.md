@@ -1,6 +1,6 @@
 # Anexo A2 — Análise de Rota
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 (1.0 de 03/11/2026) · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 (1.0 de 03/11/2026) · **Status:** Aprovado em 24/11/2026
 **Pergunta:** qual é o melhor caminho para entregar um aplicativo de excelência para notebooks, celulares e tablets, com servidor num **notebook antigo** (DDR3, HD), acesso local e remoto, interação entre usuários, visão computacional e dispositivos embarcados, desenvolvido por **uma pessoa** e preparado para venda?
 **Base:** diagnóstico do MVP, decisões do responsável de 03/11 e 17/11/2026 (Volume 00) e Volumes 01–12.
 
@@ -10,7 +10,7 @@
 
 1. Produto da **Avante Tech Jr**, instalado **localmente** em um computador (um por instalação), usado internamente e **preparado para venda** como gestão de estoque inteligente com visão computacional.
 2. Servidor adaptável a **Linux e Windows**; na Avante, um notebook antigo (DDR3, HD) que não roda Windows 11.
-3. Cerca de **30 pessoas com acesso**, não simultâneas; **um único desenvolvedor**, com o Claude Code como executor.
+3. Cerca de **30 pessoas com acesso**, que não usam o sistema ao mesmo tempo; desempenho projetado com **margem de 10 usuários simultâneos** (RNF-05, a confirmar na R0-05); **um único desenvolvedor**, com o Claude Code como executor.
 4. Usado como **aplicativo**: o usuário baixa/instala e interage com outros usuários (ex.: chamado de suporte que a equipe vê e responde).
 5. Notebooks, celulares e tablets, **dentro e fora** da rede do cliente; servidor com internet.
 6. Todas as funções do MVP preservadas e melhoradas (Anexo A1).
@@ -67,7 +67,7 @@ Limitações honestas da PWA, todas com contorno: no iPhone, notificações push
 ### D-06 — Servidor em Linux **e** Windows
 | Alternativa | Avaliação |
 |---|---|
-| **Instalação nativa por sistema, com camada de plataforma comum; Linux primeiro (R0–R3), Windows na R4** | Mesmo código; diferenças isoladas em `platform/` e `packaging/`; testes da camada de plataforma em Windows desde a R0 evitam surpresas; a Avante recebe valor sem esperar o Windows |
+| **Instalação nativa por sistema, com camada de plataforma comum; Linux primeiro (R0–R3), Windows na R4** | Mesmo código; diferenças isoladas em `backend/src/avante/platform/` e `packaging/`; testes da camada de plataforma em Windows desde a R0 evitam surpresas; a Avante recebe valor sem esperar o Windows |
 | Linux e Windows completos desde a R1 | Dobra empacotamento, testes de instalação e documentação antes de qualquer uso real, com um único desenvolvedor; o notebook da Avante nem roda Windows 11. Descartado |
 | Docker Desktop no Windows / VM Linux no Windows | Pesados para hardware modesto e frágeis em notebook. Descartados |
 
@@ -163,7 +163,7 @@ Lista viva no Volume 12 §4. Os decisivos para a rota:
 
 ## 5. Rota recomendada (resumo)
 
-1. Aprovar os Volumes 00–13 e os anexos (v3.0.0).
+1. Aprovar os Volumes 00–13 e os anexos (v3.0.0). ✅ Aprovados em 24/11/2026 como v3.1.0 (D-22).
 2. R0: provar o notebook (hardware, carga, energia), a rede e a câmera; desenhar e testar o protótipo no Claude Design; construir a fundação técnica com o Claude Code.
 3. R1: colocar o núcleo em uso real em paralelo ao MVP o quanto antes.
 4. R2: completar a paridade, importar os dados e aposentar o MVP.

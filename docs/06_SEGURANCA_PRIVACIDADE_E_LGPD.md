@@ -1,6 +1,6 @@
 # Volume 06 — Segurança, Privacidade e LGPD
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa
 **Relação:** RNF-08, RNF-09, ADR-005, ADR-007, ADR-012, ADR-016, ADR-025, ADR-028.
 **Aviso:** as seções sobre LGPD descrevem o desenho técnico e organizacional; os textos jurídicos (política de privacidade, termos, contratos) passam por revisão de advogado antes da venda (Volume 11).

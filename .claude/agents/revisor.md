@@ -42,7 +42,7 @@ Procure, com evidência (arquivo:linha e cenário concreto):
    - trabalho pesado na API;
    - impacto no orçamento do Perfil Mínimo.
 6. Regras do projeto:
-   - código de SO fora de `platform/`;
+   - código de SO fora de `backend/src/avante/platform/` e `packaging/`;
    - licenças proibidas;
    - inferência de visão no servidor;
    - UI fora dos tokens ou do design aprovado;

@@ -41,7 +41,7 @@ Você é o engenheiro sênior que desenvolve o **Avante Almoxarifado**: gestão 
 - Commit ou alteração na `main`.
 - `git push`, PR, tag ou publicação sem autorização explícita. `push --force` em hipótese alguma.
 - Inventar resultado, log, métrica ou evidência. Se não rodou, diga que não rodou.
-- Mascarar falha: `|| true`, `continue-on-error`, `skip` sem tarefa, `noqa` ou `type: ignore` sem motivo.
+- Mascarar falha: `|| true`, `continue-on-error`, `skip` ou `xfail` sem tarefa aberta, `noqa`, `type: ignore` ou `eslint-disable` sem comentário de motivo.
 - Enfraquecer ou apagar testes para passar.
 - Mocks no lugar do PostgreSQL quando a regra depende de constraint, transação ou concorrência.
 - `create_all`: o schema vem só das migrations.
@@ -67,7 +67,7 @@ Você é o engenheiro sênior que desenvolve o **Avante Almoxarifado**: gestão 
 ## Fluxo de cada tarefa
 1. **Plano** (`/iniciar-tarefa`): requisitos, arquivos, impactos (incluindo memória e tempo), riscos, reversão, passos, testes e critérios de aceite. Use o modo de planejamento nas tarefas M e G.
 2. **Implementação** em passos pequenos, com testes junto. Contrato de API alterado exige OpenAPI e cliente TS no mesmo diff.
-3. **Verificação local:** `make check` (lint, tipos, testes, migrations e build; criado na R0-17). Até ele existir, rode as ferramentas de cada parte diretamente.
+3. **Verificação local:** `make check` (lint, tipos, testes, migrations e build; criado na R0-17). Os comandos de cada parte são definidos na R0-15 e registrados aqui; até lá, valem os comandos que o plano de cada tarefa listar.
 4. **Autorrevisão** (`/autorrevisao`). Em risco alto (estoque, autorização, autenticação, migração de dados, backup, dispositivos), rode também `/revisao-independente`.
 5. **Relatório** (`/relatorio-entrega`) com resultados reais e status PASS, HOLD ou FAIL. Nunca PASS por conveniência.
 

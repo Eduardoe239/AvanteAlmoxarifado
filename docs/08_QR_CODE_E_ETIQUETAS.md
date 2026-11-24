@@ -1,6 +1,6 @@
 # Volume 08 — QR Code, Etiquetas e Leitura
 
-**Produto:** Avante Almoxarifado · **Versão:** 3.0.0 · **Data:** 17/11/2026 · **Status:** Proposto — aguarda aprovação
+**Produto:** Avante Almoxarifado · **Versão:** 3.1.0 · **Data:** 24/11/2026 · **Status:** Aprovado em 24/11/2026
 **Responsável:** Luís Eduardo de Sousa Barbosa
 **Relação:** detalha RF-QR-01..14 e RF-INV-06 (Volume 02) e a ADR-011 (Volume 03). Experiência do leitor: Volume 07 §8.5. Visão computacional além da leitura de códigos e leitor de cartão: Volume 05.
 

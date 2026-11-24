@@ -3,7 +3,7 @@
 Branch **`definitivo`**: gestão de estoque, patrimônio e empréstimos da **Avante Tech Jr**, com QR Code, visão computacional na ponta e dispositivos embarcados. O produto também está sendo preparado para venda como sistema de gestão de estoque inteligente.
 A branch `main` contém o MVP (`lab_almoxarifado`), que continua em uso e **não é alterado** por esta branch.
 
-> **Estado:** documentação v3.0.0 proposta, aguardando aprovação. Próximo passo: release **R0 — Fundação**. Ainda não há código de produção nesta branch.
+> **Estado:** documentação v3.1.0 aprovada em 24/11/2026. Próximo passo: release **R0 — Fundação**. Ainda não há código de produção nesta branch.
 
 ## O que é
 - **Aplicativo instalável (PWA)** para notebooks, celulares e tablets.
